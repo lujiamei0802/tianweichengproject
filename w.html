@@ -1,0 +1,102 @@
+<!-- <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>入离职情况表</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 600px;
+            margin: 20px auto;
+        }
+        /*表框线颜色*/
+        th, td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: center;
+        }
+        /*表头颜色*/
+        th {
+            background-color: #4c4a4a;
+            color: #000;
+        }
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            margin: 30px auto 10px;
+        }
+        /*信息机电为白色*/
+        tr:nth-child(2), table tr:nth-child(4) {
+             background-color: #fff;
+         }
+         /* 计算机学院行背景色为灰色 */
+         tr:nth-child(3) {
+             background-color: #ccc;
+         }
+         /*按钮位置*/
+        .back-bth{
+            margin: 10px 160px 0;
+        }
+    </style>
+</head>
+<body>
+    <a href="javascript:showTable()"id="viewLink">查看入职离职情况</a>
+    <div id="tableContainer"></div>
+    <script src="w.js"></script>
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html>
+<body>
+    <a id="viewLink" href="javascript:showTable()">查看入离职情况表</a>
+    <div id="tableContainer"></div>
+    <script>
+        function showTable() {
+            // 隐藏超链接   
+            document.getElementById('viewLink').style.display = 'none';
+            // 定义二维数组：arr[0]是表头/部门名，arr[1]新入职，arr[2]离职，arr[3]净增
+            var arr = new Array(4);
+            arr[0] = ["部门", "信息工程学院", "计算机工程学院", "机电工程学院"];
+            arr[1] = ["18年新入职", 3, 10, 8];
+            arr[2] = ["18年离职", 1, 1, 2];
+            arr[3] = ["净增人数", 0, 0, 0];
+            // 先初始化，后面计算
+            // 计算净增人数（新入职 - 离职）
+            for (var i = 1; i < arr[0].length; i++) {
+                arr[3][i] = arr[1][i] - arr[2][i];
+            }
+            // 拼接表格HTML
+            var str = "<table border='1'>";
+            // 先循环生成表头行（arr[0]）
+            str += "<tr>";
+            for (var i = 0; i < arr[0].length; i++) {
+                str += "<<th>" + arr[0][i] + "</</th>";
+            }
+            str += "</tr>";
+            // 再循环生成“新入职、离职、净增”行（arr[1]、arr[2]、arr[3]）
+            for (var i = 1; i < arr.length; i++) {
+                str += "<tr>";
+                for (var j = 0; j < arr[i].length; j++) {
+                    str += "<td>" + arr[i][j] + "</td>";
+                }
+                str += "</tr>";
+            }
+            str += "</table>";
+            // 添加返回按钮
+            str += '<div class="back-bth"><button onclick="hideTable()">返回</button></div>';
+            // 渲染到页面
+            document.getElementById('tableContainer').innerHTML = str;
+        }
+        function hideTable() {
+            document.getElementById('tableContainer').innerHTML = '';
+            document.getElementById('viewLink').style.display = 'inline';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title> 案例 5-3</title>
+    <style>
+        #box {
+            border: 5px solid #eee;
+            width: 400px;
+            height: 250px;
+            position: absolute;
+            box-shadow: 2px 2px 2px 2px#666; 
+        }
+
+        .hd {
+            width: 100%;
+            height: 25px;
+            background-color: #7c9299;
+            border-bottom: 1px solid #369;
+            line-height: 25px;
+            color: #fff;
+            cursor: move;
+        }
+
+        #box_close {
+            float: right;
+            cursor: pointer;
+        }
+    </style>
+    <script src="q.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <div id="drop" class="hd">注册信息（可以拖拽）
+            <span id="box_close">【关闭】</span>
+        </div>
+    </div>
+</body>
+
+</html>
